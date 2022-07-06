@@ -1,0 +1,11 @@
+{
+  "name": "github-profile-apple-music",
+  "packageManager": "yarn@3.2.1",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "app": "yarn workspace app"
+  }
+}
