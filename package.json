@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "web": "yarn workspace web",
+    "dev:web": "yarn web dev",
     "backend": "yarn workspace backend",
     "workspace:start:backend": "yarn workspace backend start",
     "start:backend": "env-cmd --silent run-s workspace:start:backend",
