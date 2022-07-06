@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "app": "yarn workspace app"
+    "web": "yarn workspace web",
+    "backend": "yarn workspace backend"
   }
 }
