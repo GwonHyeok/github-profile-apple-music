@@ -9,7 +9,7 @@
     "web": "yarn workspace web",
     "backend": "yarn workspace backend",
     "workspace:start:backend": "yarn workspace backend start",
-    "start:backend": "env-cmd run-s workspace:start:backend"
+    "start:backend": "env-cmd --silent run-s workspace:start:backend"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
