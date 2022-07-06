@@ -12,3 +12,5 @@
 
 .firebaserc
 .env
+
+node_modules/
