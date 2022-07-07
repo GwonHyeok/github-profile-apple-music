@@ -10,13 +10,5 @@
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "compileOnSave": true,
-  "references": [
-    {
-      "path": "../core"
-    }
-  ],
-  "include": [
-    "src"
-  ]
+  "compileOnSave": true
 }

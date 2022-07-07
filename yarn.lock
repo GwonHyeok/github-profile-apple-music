@@ -1633,6 +1633,7 @@ __metadata:
   dependencies:
     "@typescript-eslint/eslint-plugin": ^5.30.5
     "@typescript-eslint/parser": ^5.30.5
+    core: "*"
     eslint: ^8.19.0
     eslint-config-google: ^0.14.0
     eslint-plugin-import: ^2.26.0
@@ -1960,6 +1961,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"core@*, core@workspace:packages/core":
+  version: 0.0.0-use.local
+  resolution: "core@workspace:packages/core"
+  dependencies:
+    jsonwebtoken: ^8.5.1
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
 "cors@npm:^2.8.5":
   version: 2.8.5
   resolution: "cors@npm:2.8.5"
@@ -2132,9 +2142,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.172":
-  version: 1.4.180
-  resolution: "electron-to-chromium@npm:1.4.180"
-  checksum: 98df07cfb0f67c383aa124ffc12fd9e9d3fd50e1c79548fc3d1524f3dbc3ac92c41f145a97e4e434d3d959f31e8ceab1e7426a6a5ef846af19e5b30e60bb7e98
+  version: 1.4.182
+  resolution: "electron-to-chromium@npm:1.4.182"
+  checksum: 8c35474b6ec0ead74246eb0783e10c9c15bc41307aa86324a21ef7aecb02450080263d5a44f1bd843b689e4d65ea5c0d8e204b87dfcb990bbf816909eb49401d
   languageName: node
   linkType: hard
 

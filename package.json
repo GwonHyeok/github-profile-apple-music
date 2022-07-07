@@ -7,12 +7,18 @@
   ],
   "scripts": {
     "web": "yarn workspace web",
-    "dev:web": "yarn web dev",
     "backend": "yarn workspace backend",
-    "workspace:start:backend": "yarn workspace backend start",
-    "start:backend": "env-cmd --silent run-s workspace:start:backend",
+    "core": "yarn workspace core",
+    "build": "env-cmd run-s workspace:build:core workspace:build:backend",
+    "workspace:build:core": "env-cmd yarn core build",
+    "workspace:build:backend": "env-cmd yarn backend build",
+    "workspace:emulate:backend": "env-cmd yarn backend serve:emulate",
     "workspace:shell:backend": "yarn workspace backend shell",
-    "shell:backend": "run-s workspace:shell:backend"
+    "workspace:start:backend": "yarn workspace backend start",
+    "dev:web": "yarn web dev",
+    "start:backend": "env-cmd --silent run-s workspace:start:backend",
+    "shell:backend": "env-cmd --silent run-s workspace:build:core workspace:shell:backend",
+    "emulate:backend": "env-cmd --silent run-s workspace:build:core workspace:emulate:backend"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

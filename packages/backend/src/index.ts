@@ -1,5 +1,8 @@
-import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
+import {AppOptions} from "firebase-admin";
 
-export const helloWorld = functions.https.onRequest((req, res) => {
-  res.send("Hello from Firebase!");
-});
+const adminConfig =
+    JSON.parse(process.env.FIREBASE_CONFIG as any) as AppOptions;
+admin.initializeApp(adminConfig);
+
+export * as scheduler from "./scheduler";
