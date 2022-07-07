@@ -1,45 +1,54 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from 'react';
+import { collection, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { firestore } from './firebase';
+
+import './App.css';
+
+function AppleMusicConnectButton() {
+  const [value, loading, error] = useCollection(collection(firestore, 'musicKitDeveloperTokens'), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
+
+  const requestAuth = async (developerTokenDocument: QueryDocumentSnapshot<DocumentData>) => {
+    if (!value) return;
+
+    const instance = MusicKit.configure({
+      developerToken: developerTokenDocument.get('token'),
+    });
+    const userToken = await instance.authorize();
+    console.log(developerTokenDocument.id, developerTokenDocument.get('token'), userToken);
+  };
+
+  return (
+    <div>
+      {error && <strong>Error: {JSON.stringify(error)}</strong>}
+      {loading && <span>Collection: Loading...</span>}
+      {value && (
+        <span>
+          Collection:{' '}
+          {value.docs.map((doc) => (
+            <div key={doc.id}>
+              <React.Fragment key={doc.id}>{JSON.stringify(doc.data())}, </React.Fragment>
+              <button type="button" onClick={() => requestAuth(doc)}>
+                Authorize
+              </button>
+            </div>
+          ))}
+        </span>
+      )}
+    </div>
+  );
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
+        <AppleMusicConnectButton />
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
