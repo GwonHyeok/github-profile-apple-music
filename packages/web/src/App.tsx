@@ -1,5 +1,5 @@
 import React from 'react';
-import { collection, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import { setDoc, doc, collection, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { firestore } from './firebase';
 
@@ -17,7 +17,11 @@ function AppleMusicConnectButton() {
       developerToken: developerTokenDocument.get('token'),
     });
     const userToken = await instance.authorize();
-    console.log(developerTokenDocument.id, developerTokenDocument.get('token'), userToken);
+    await setDoc(doc(collection(firestore, 'musicKitUserTokens')), {
+      developerTokenId: developerTokenDocument.id,
+      token: userToken,
+      createdAt: new Date(),
+    });
   };
 
   return (
@@ -26,10 +30,9 @@ function AppleMusicConnectButton() {
       {loading && <span>Collection: Loading...</span>}
       {value && (
         <span>
-          Collection:{' '}
           {value.docs.map((doc) => (
-            <div key={doc.id}>
-              <React.Fragment key={doc.id}>{JSON.stringify(doc.data())}, </React.Fragment>
+            <div key={doc.id} style={{ display: 'flex', flexDirection: 'column' }}>
+              <React.Fragment key={doc.id}>Developer Token ID : {doc.id}</React.Fragment>
               <button type="button" onClick={() => requestAuth(doc)}>
                 Authorize
               </button>

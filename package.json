@@ -16,7 +16,7 @@
     "workspace:shell:backend": "yarn workspace backend shell",
     "workspace:start:backend": "yarn workspace backend start",
     "workspace:deploy:web": "yarn workspace web deploy",
-    "dev:web": "yarn web dev",
+    "dev:web": "env-cmd --silent yarn web dev",
     "build:web": "env-cmd --silent yarn web build",
     "deploy:web": "env-cmd --silent run-s build:web workspace:deploy:web",
     "start:backend": "env-cmd --silent run-s workspace:start:backend",

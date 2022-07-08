@@ -5,6 +5,10 @@ service cloud.firestore {
     	allow read: if true;
     }
 
+    match /musicKitUserTokens/{id} {
+        allow create: if true;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
