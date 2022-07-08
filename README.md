@@ -50,5 +50,5 @@ yarn build:web
 #### deployment web
 
 ```bash
-firebase deploy --only hosting
+yarn deploy:web
 ```
