@@ -3,13 +3,13 @@ import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDj8rf6If5LDugpE5GBn8QDRAqQ5TSqIS8',
-  authDomain: 'github-profile-apple-music.firebaseapp.com',
-  projectId: 'github-profile-apple-music',
-  storageBucket: 'github-profile-apple-music.appspot.com',
-  messagingSenderId: '204939737976',
-  appId: '1:204939737976:web:a1f47d1e63c689ab48e68d',
-  measurementId: 'G-5T60BXZVEF',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 export const app = initializeApp(firebaseConfig);
