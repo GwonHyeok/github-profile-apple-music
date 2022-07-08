@@ -1,4 +1,19 @@
 {
+  "hosting": {
+    "public": "packages/web/dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "cleanUrls": true
+  },
   "functions": {
     "source": "packages/backend",
     "predeploy": [
