@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/api/v1/**",
+        "function": "api-v1"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
@@ -36,6 +40,10 @@
     },
     "firestore": {
       "enabled": true
+    },
+    "hosting": {
+      "enabled": true,
+      "port": 8050
     }
   }
 }
