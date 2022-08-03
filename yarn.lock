@@ -1706,6 +1706,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.21.4":
+  version: 0.21.4
+  resolution: "axios@npm:0.21.4"
+  dependencies:
+    follow-redirects: ^1.14.0
+  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^2.2.0":
   version: 2.2.0
   resolution: "axobject-query@npm:2.2.0"
@@ -2136,6 +2145,7 @@ __metadata:
   resolution: "core@workspace:packages/core"
   dependencies:
     jsonwebtoken: ^8.5.1
+    node-musickit-api: ^2.1.1
     typescript: ^4.7.4
   languageName: unknown
   linkType: soft
@@ -3391,6 +3401,16 @@ __metadata:
   version: 3.2.6
   resolution: "flatted@npm:3.2.6"
   checksum: 33b87aa88dfa40ca6ee31d7df61712bbbad3d3c05c132c23e59b9b61d34631b337a18ff2b8dc5553acdc871ec72b741e485f78969cf006124a3f57174de29a0e
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.14.0":
+  version: 1.15.1
+  resolution: "follow-redirects@npm:1.15.1"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 6aa4e3e3cdfa3b9314801a1cd192ba756a53479d9d8cca65bf4db3a3e8834e62139245cd2f9566147c8dfe2efff1700d3e6aefd103de4004a7b99985e71dd533
   languageName: node
   linkType: hard
 
@@ -4961,6 +4981,16 @@ __metadata:
     css-select: ^4.2.1
     he: 1.2.0
   checksum: 57c61d5c34fd8c6139ef497cd8d7a4b1b8f4c127986d7a8624f83ba31d3e4a5fdea2684b021989f6bf920d517f8075068f05f031e8813e84fc42569906704cad
+  languageName: node
+  linkType: hard
+
+"node-musickit-api@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "node-musickit-api@npm:2.1.1"
+  dependencies:
+    axios: ^0.21.4
+    jsonwebtoken: ^8.5.1
+  checksum: 4f7bdfb76157eb9ce55d7d62cc64e81981684b3dd36eff645fc6af6d8d873c8cea238bc7f75176c3c7daa6410558671c7302f18f800aedec4821dfe03a0e1e70
   languageName: node
   linkType: hard
 
