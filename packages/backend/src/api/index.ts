@@ -1,6 +1,7 @@
 import * as functions from "firebase-functions";
 import * as express from "express";
 import * as admin from "firebase-admin";
+import * as core from "core";
 
 const firestore = admin.firestore();
 const app = express();
@@ -13,7 +14,7 @@ v1Router.get("/", (req, res) => {
   });
 });
 
-v1Router.get("/:id", async (req, res) => {
+v1Router.get("/users/:id", async (req, res) => {
   const document = await firestore
     .collection("musicKitUserTokens")
     .doc(req.params.id)
@@ -28,6 +29,32 @@ v1Router.get("/:id", async (req, res) => {
     id: document.id,
     token: document.get("token"),
     issuedAt: document.get("createdAt"),
+  });
+});
+
+v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
+  const document = await firestore
+    .collection("musicKitUserTokens")
+    .doc(req.params.id)
+    .get();
+
+  if (!document.exists) {
+    res.status(403).json({error: "User Token not found"});
+    return;
+  }
+
+  const userToken = document.get("token");
+  const response = await core.apple.Music.getRecentlyPlayed(userToken);
+
+  // failed to get recently played tracks
+  if (response.status !== 200) {
+    res.status(403).json({error: "Failed to get recently played tracks"});
+    return;
+  }
+
+  res.json({
+    id: document.id,
+    data: response.body.data,
   });
 });
 
