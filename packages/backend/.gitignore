@@ -65,6 +65,7 @@ build/Release
 # Compiled JavaScript files
 lib/**/*.js
 lib/**/*.js.map
+lib/**/*.pug
 
 # TypeScript v1 declaration files
 typings/
