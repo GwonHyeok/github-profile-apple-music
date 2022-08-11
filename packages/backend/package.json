@@ -19,7 +19,8 @@
     "clear:build:watch:serve": "run-s clear build watch:serve",
     "shell": "yarn run build && firebase functions:shell",
     "start": "yarn run clear:build:watch:serve",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "deploy": "firebase deploy --only functions --debug"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.5",

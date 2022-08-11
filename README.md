@@ -50,6 +50,17 @@ APPLE_MEDIA_SERVICE_TEAM_ID
 yarn start:backend
 ```
 
+#### build backend
+
+```bash
+yarn build
+```
+
+#### deploy backend
+```shell
+yarn deploy:backend
+```
+
 #### kill all firebase emulator processes
 
 ```bash
