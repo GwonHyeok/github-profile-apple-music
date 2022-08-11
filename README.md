@@ -50,6 +50,12 @@ APPLE_MEDIA_SERVICE_TEAM_ID
 yarn start:backend
 ```
 
+#### kill all firebase emulator processes
+
+```bash
+lsof -t -i:8080 -i:9000 -i:9099 -i:9199 -i:9090 -i:8085 | xargs kill -9
+```
+
 ### web
 
 #### run web locally

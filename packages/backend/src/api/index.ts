@@ -5,6 +5,7 @@ import * as core from "core";
 
 const firestore = admin.firestore();
 const app = express();
+app.set("view engine", "pug");
 const v1Router = express.Router();
 
 v1Router.get("/", (req, res) => {
@@ -56,6 +57,7 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
     id: document.id,
     data: response.body.data,
   });
+  res.render("recentlyPlayed", {});
 });
 
 app.use("/api/v1", v1Router);
