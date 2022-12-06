@@ -74,6 +74,7 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
   }
 
   // debug logging
+  res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
   res.render("temp", {
     ...response,
