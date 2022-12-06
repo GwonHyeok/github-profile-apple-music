@@ -30,6 +30,7 @@ interface ResourceAttributesSong {
   isrc: string;
   artwork: ResourceArtwork;
   composerName: string;
+  artistName: string;
   url: string;
   playParams: ResourcePlayParams;
   discNumber: number;
@@ -76,7 +77,7 @@ declare module "node-musickit-api/personalized" {
     async getRecentlyPlayed(
       limit: number = 1,
       offset: number = 0,
-      type?: string
+      type?: string,
     ): Promise<MusicKitResponse<PaginatedResourceCollectionResponse>>;
   }
 

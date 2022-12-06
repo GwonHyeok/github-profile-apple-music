@@ -6,11 +6,12 @@ const adminConfig = JSON.parse(
 ) as AppOptions;
 
 // apply base64 encoded firebase admin service account credential
-if (process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT) {
+if (process.env.APP_FIREBASE_ADMIN_SERVICE_ACCOUNT) {
   const serviceAccount = JSON.parse(
-    Buffer.from(process.env.FIREBASE_ADMIN_SERVICE_ACCOUNT, "base64").toString(
-      "utf8",
-    ),
+    Buffer.from(
+      process.env.APP_FIREBASE_ADMIN_SERVICE_ACCOUNT,
+      "base64",
+    ).toString("utf8"),
   );
   adminConfig.credential = admin.credential.cert(serviceAccount);
 }

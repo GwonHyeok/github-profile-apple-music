@@ -1,8 +1,9 @@
 import * as functions from "firebase-functions";
 import * as express from "express";
 import * as admin from "firebase-admin";
-import * as core from "core";
+import * as apple from "../apple";
 import * as path from "path";
+import axios from "axios";
 
 const firestore = admin.firestore();
 const app = express();
@@ -47,7 +48,7 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
   }
 
   const userToken = document.get("token");
-  const response = await core.apple.Music.getRecentlyPlayed(userToken);
+  const response = await apple.Music.getRecentlyPlayed(userToken);
 
   // failed to get recently played tracks
   if (response.status !== 200) {
@@ -55,8 +56,31 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
     return;
   }
 
+  // Recently Song
+  let artistName;
+  let songName;
+  let encodedAlbumArtImage;
+  if (response.body.data.length > 0) {
+    const track = response.body.data[0];
+    artistName = track.attributes.artistName;
+    songName = track.attributes.name;
+    const image = await axios.get(
+      track.attributes.artwork.url.replace("{w}", "300").replace("{h}", "300"),
+      {responseType: "arraybuffer"},
+    );
+    encodedAlbumArtImage = `data:image/jpg;base64,${Buffer.from(
+      image.data,
+    ).toString("base64")}`;
+  }
+
   // debug logging
-  res.render("temp", response);
+  res.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
+  res.render("temp", {
+    ...response,
+    artistName,
+    songName,
+    encodedAlbumArtImage,
+  });
 });
 
 app.use("/api/v1", v1Router);

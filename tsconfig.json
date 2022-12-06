@@ -3,8 +3,5 @@
     "composite": true
   },
   "references": [
-    {
-      "path": "./packages/core"
-    }
   ]
 }
