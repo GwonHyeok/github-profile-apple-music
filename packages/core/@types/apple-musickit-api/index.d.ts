@@ -11,7 +11,7 @@ interface MusicKitResponse<T> {
 
 interface PaginatedResourceCollectionResponse {
   next: string;
-  data: Resource;
+  data: Resource[];
 }
 
 interface Resource {
