@@ -9,6 +9,8 @@
     "web": "yarn workspace web",
     "backend": "yarn workspace backend",
     "core": "yarn workspace core",
+    "firebase:emulator": "yarn firebase:kill && firebase emulators:start --only auth,functions,firestore,pubsub --export-on-exit=./emulator-data --import=./emulator-data",
+    "firebase:kill": "kill-port 4000 9099 5001 8080 9199 8085",
     "build": "env-cmd run-s workspace:build:core workspace:build:backend",
     "workspace:build:core": "env-cmd yarn core build",
     "workspace:build:backend": "env-cmd yarn backend build",
@@ -28,11 +30,13 @@
     "build:watch:core": "env-cmd --silent run-s workspace:build:watch:core",
     "shell:backend": "env-cmd --silent run-s workspace:build:core workspace:shell:backend",
     "emulate:backend": "env-cmd --silent run-s workspace:build:core workspace:emulate:backend",
-    "dev:backend": "env-cmd --silent run-p build:watch:core build:watch:backend emulate:backend"
+    "dev:backend": "env-cmd --silent run-p build:watch:core build:watch:backend emulate:backend",
+    "serve:watch": "env-cmd --silent run-p firebase:kill build && env-cmd --silent run-p dev:web build:watch:core build:watch:backend firebase:emulator"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
     "eslint": "^8.19.0",
+    "kill-port": "^2.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2"
