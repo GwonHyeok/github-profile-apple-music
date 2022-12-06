@@ -56,7 +56,7 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
   }
 
   // debug logging
-  res.render("temp", {});
+  res.render("temp", response);
 });
 
 app.use("/api/v1", v1Router);
