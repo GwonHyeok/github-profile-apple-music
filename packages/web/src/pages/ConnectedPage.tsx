@@ -1,8 +1,8 @@
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { userIdState } from '../states';
 
 export function ConnectedPage() {
-  const userId = useRecoilValue(userIdState);
+  const [userId, setUserId] = useRecoilState(userIdState);
   const apiUrl = import.meta.env.VITE_API_URL;
   const templates = [`${apiUrl}/users/${userId}/recent/played/tracks`];
 
@@ -14,10 +14,16 @@ export function ConnectedPage() {
     alert('Copied to clipboard!');
   };
 
+  const disconnect = () => {
+    setUserId(null);
+  };
+
   return (
     <div>
-      <h1>Connected</h1>
-
+      <div style={{ display: 'flex', gap: 16 }}>
+        <h1>Connected</h1>
+        <button onClick={disconnect}>Disconnect</button>
+      </div>
       <h2>Available Templates</h2>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         {templates.map((templateUrl) => (
