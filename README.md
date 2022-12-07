@@ -4,6 +4,12 @@
 
 [https://github-profile-apple-music.web.app](https://github-profile-apple-music.web.app)
 
+# Example
+
+## Recently Played
+[![Recently Played](https://us-central1-github-profile-apple-music.cloudfunctions.net/api-v1/api/v1/users/QS7fm798JUAUOd5khxSk/recent/played/tracks)](https://us-central1-github-profile-apple-music.cloudfunctions.net/api-v1/api/v1/users/QS7fm798JUAUOd5khxSk/recent/played/tracks)
+
+
 # Development
 
 1. [Prerequisites](#Prerequisites)
