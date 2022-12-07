@@ -64,7 +64,6 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
   let textColor1;
   let textColor2;
   if (response.body.data.length > 0) {
-    console.log(response.body.data[0].attributes.artwork);
     const track = response.body.data[0];
     artistName = track.attributes.artistName;
     songName = track.attributes.name;
