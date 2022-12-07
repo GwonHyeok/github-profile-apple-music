@@ -1,4 +1,10 @@
-# github-profile-apple-music
+# [WIP] github-profile-apple-music
+
+# How to use
+
+[https://github-profile-apple-music.web.app](https://github-profile-apple-music.web.app)
+
+# Development
 
 1. [Prerequisites](#Prerequisites)
 2. [Install](#Install)
@@ -57,6 +63,7 @@ yarn build
 ```
 
 #### deploy backend
+
 ```shell
 yarn deploy:backend
 ```
