@@ -8,7 +8,7 @@
 
 ## Recently Played
 
-[![Recently Played](https://github-profile-apple-music.web.app/api/v1/users/rpMHqh68GCkK2hQNgkMl/recent/played/tracks)
+![Recently Played](https://github-profile-apple-music.web.app/api/v1/users/rpMHqh68GCkK2hQNgkMl/recent/played/tracks)
 
 # Development
 
