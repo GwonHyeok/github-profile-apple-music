@@ -2,15 +2,35 @@ svg(viewBox="0 0 300 350"
     width=300
     height=350 xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink" fill="none")
+    style.
+        .wrap {
+            width: 100%;
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        }
+
+        .songName {
+            font-size: 18px;
+            font-weight: bold;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .artistName {
+            font-size: 14px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
     rect(fill=`#${backgroundColor}` x=0 y=0 width=300 height="100%")
-    foreignObject(width=300 height=350 x=20 y=20)
-        div(xmlns="http://www.w3.org/1999/xhtml")
+    foreignObject(width=260 height=350 x=20 y=20)
+        div.wrap(xmlns="http://www.w3.org/1999/xhtml")
             img(
                 style="border-radius: 8px"
                 width=260
                 height=260
                 src=`${encodedAlbumArtImage}`
             )
-            div(style=`color: #${textColor1}; font-size: 18px; font-family: sans-serif; margin-top:8px;`) #{songName}
-            div(style=`color: #${textColor2}; font-size: 14px; font-family: sans-serif; margin-top:4px;`) #{artistName}
+            div.songName(style=`color: #${textColor1}; margin-top:8px;`) #{songName}
+            div.artistName(style=`color: #${textColor2}; margin-top:4px;`) #{artistName}
 
