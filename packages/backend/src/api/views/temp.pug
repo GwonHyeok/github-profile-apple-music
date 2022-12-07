@@ -2,7 +2,7 @@ svg(viewBox="0 0 300 350"
     width=300
     height=350 xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink" fill="none")
-    rect(fill="#212121" x=0 y=0 width=300 height="100%")
+    rect(fill=`#${backgroundColor}` x=0 y=0 width=300 height="100%")
     foreignObject(width=300 height=350 x=20 y=20)
         div(xmlns="http://www.w3.org/1999/xhtml")
             img(
@@ -11,6 +11,6 @@ svg(viewBox="0 0 300 350"
                 height=260
                 src=`${encodedAlbumArtImage}`
             )
-            div(style="color: white; font-size: 18px; font-family: sans-serif; margin-top:8px;") #{songName}
-            div(style="color: white; font-size: 14px; font-family: sans-serif; margin-top:4px;") #{artistName}
+            div(style=`color: #${textColor1}; font-size: 18px; font-family: sans-serif; margin-top:8px;`) #{songName}
+            div(style=`color: #${textColor2}; font-size: 14px; font-family: sans-serif; margin-top:4px;`) #{artistName}
 
