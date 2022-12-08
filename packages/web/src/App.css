@@ -1,0 +1,82 @@
+.background {
+    height: 100vh;
+    background: linear-gradient(180deg, #F0384C 0%, #FE5B77 36.98%, #FF4D8B 64.58%, #DC348E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.logo {
+    position: absolute;
+    top: 64px;
+    left: 64px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 36px;
+    color: white;
+    margin-right: 148px;
+}
+
+.right {
+    padding: 110px;
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0px 4px 134px rgba(175, 21, 95, 0.47);
+    backdrop-filter: blur(13px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 24px;
+}
+
+.right > img {
+    width: 448px;
+    height: 522px;
+}
+
+/* 버튼 */
+.button {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 152px 20px 122px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 33px 20px 86px #8F073C;
+    backdrop-filter: blur(28.5px);
+
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.53);
+    font-size: 39px;
+}
+
+.play-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -24px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(145.18deg, #FF95BB 9.93%, #FF1E6F 89.8%);
+    box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.05);
+
+}
