@@ -1,0 +1,56 @@
+.floating-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    filter: blur(0px);
+}
+
+.floating-container .circle {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.circle {
+    background-blend-mode: darken;
+}
+
+.circle-1 {
+    animation: float;
+    animation-duration: 4s;
+}
+
+.circle-2 {
+    animation: float;
+    animation-duration: 5.7s;
+}
+
+.circle-3 {
+    animation: float;
+    animation-duration: 4.9s;
+}
+
+.circle-4 {
+    animation: float;
+    animation-duration: 6s;
+}
+
+.circle-5 {
+    animation: float;
+    animation-duration: 4.3s;
+}
+
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+

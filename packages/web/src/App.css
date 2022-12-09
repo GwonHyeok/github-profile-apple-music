@@ -1,5 +1,6 @@
 .background {
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(180deg, #F0384C 0%, #FE5B77 36.98%, #FF4D8B 64.58%, #DC348E 100%);
     display: flex;
     align-items: center;
@@ -10,14 +11,15 @@
 
 .logo {
     position: absolute;
-    top: 64px;
-    left: 64px;
+    top: 0;
+    left: 0;
 }
 
 .wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 148px;
 }
 
 .left {
@@ -26,7 +28,6 @@
     align-items: flex-start;
     font-size: 36px;
     color: white;
-    margin-right: 148px;
 }
 
 .right {
@@ -35,7 +36,6 @@
     box-shadow: 0px 4px 134px rgba(175, 21, 95, 0.47);
     backdrop-filter: blur(13px);
     /* Note: backdrop-filter has minimal browser support */
-
     border-radius: 24px;
 }
 
@@ -46,6 +46,7 @@
 
 /* 버튼 */
 .button {
+    cursor: pointer;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -77,6 +78,5 @@
     height: 110px;
     border-radius: 50%;
     background: linear-gradient(145.18deg, #FF95BB 9.93%, #FF1E6F 89.8%);
-    box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.05);
-
+    box-shadow: 0 4px 34px rgba(0, 0, 0, 0.05);
 }
