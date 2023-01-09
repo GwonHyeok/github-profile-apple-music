@@ -8,7 +8,14 @@
 
 ## Recently Played
 
+### Template 1_1
 ![Recently Played](https://github-profile-apple-music.web.app/api/v1/users/rpMHqh68GCkK2hQNgkMl/recent/played/tracks)
+
+### Template 1_2
+![Recently Played](https://github-profile-apple-music.web.app/api/v1/users/rpMHqh68GCkK2hQNgkMl/recent/played/tracks?template=template_1_2)
+
+### Template 1_3
+![Recently Played](https://github-profile-apple-music.web.app/api/v1/users/rpMHqh68GCkK2hQNgkMl/recent/played/tracks?template=template_1_3)
 
 # Development
 

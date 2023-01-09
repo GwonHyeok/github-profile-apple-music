@@ -1,6 +1,6 @@
-svg(viewBox="0 0 300 350"
-    width=300
-    height=350 xmlns="http://www.w3.org/2000/svg"
+svg(viewBox="0 0 256 330"
+    width=256
+    height=330 xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink" fill="none")
     style.
         .wrap {
@@ -9,28 +9,33 @@ svg(viewBox="0 0 300 350"
         }
 
         .songName {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 23px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: 30px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
         }
 
         .artistName {
-            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
         }
     rect(fill=`#${backgroundColor}` x=0 y=0 width=300 height="100%")
-    foreignObject(width=260 height=350 x=20 y=20)
+    foreignObject(width=256 height=350 x=24 y=24)
         div.wrap(xmlns="http://www.w3.org/1999/xhtml")
             img(
                 style="border-radius: 8px"
-                width=260
-                height=260
+                width=208
+                height=204
                 src=`${encodedAlbumArtImage}`
             )
-            div.songName(style=`color: #${textColor1}; margin-top:8px;`) #{songName}
-            div.artistName(style=`color: #${textColor2}; margin-top:4px;`) #{artistName}
+            div.songName(style=`color: #${textColor1}; margin-top:12px;`) #{songName}
+            div.artistName(style=`color: #${textColor2}; margin-top:3px;`) #{artistName}
 
