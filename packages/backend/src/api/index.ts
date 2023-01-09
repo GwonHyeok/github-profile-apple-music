@@ -48,7 +48,13 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
   }
 
   const userToken = document.get("token");
-  const response = await apple.Music.getRecentlyPlayed(userToken);
+  let response: MusicKitResponse<PaginatedResourceCollectionResponse>;
+  try {
+    response = await apple.Music.getRecentlyPlayed(userToken);
+  } catch (e) {
+    res.status(403).json({error: "Failed to get recently played tracks"});
+    return;
+  }
 
   // failed to get recently played tracks
   if (response.status !== 200) {
@@ -74,15 +80,18 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
       track.attributes.artwork.url.replace("{w}", "300").replace("{h}", "300"),
       {responseType: "arraybuffer"},
     );
+
     encodedAlbumArtImage = `data:image/jpeg;base64,${Buffer.from(
       image.data,
     ).toString("base64")}`;
   }
 
+  const templateId: string = (req.query.template as string) || "template_1_1";
+
   // debug logging
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
-  res.render("temp", {
+  res.render(templateId, {
     ...response,
     artistName,
     songName,

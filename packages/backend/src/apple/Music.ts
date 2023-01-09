@@ -1,6 +1,6 @@
 import * as MusicKit from "node-musickit-api/personalized";
 
-export async function getRecentlyPlayed(userToken: string) {
+export const getRecentlyPlayed = async function (userToken: string) {
   const teamId = process.env.APPLE_MEDIA_SERVICE_TEAM_ID;
   const keyId = process.env.APPLE_MEDIA_SERVICE_KEY_ID;
   const key = process.env.APPLE_MEDIA_SERVICE_KEY;
@@ -22,4 +22,4 @@ export async function getRecentlyPlayed(userToken: string) {
   });
 
   return MusicKitConst.getRecentlyPlayed(10, 0, "songs");
-}
+};
