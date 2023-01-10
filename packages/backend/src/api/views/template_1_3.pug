@@ -22,9 +22,9 @@ svg(viewBox="0 0 475 182"
             font-weight: 900;
             margin-top: 8px;
             line-height: 30px;
+            height: 60px;
             word-break: break-all;
             text-overflow: ellipsis;
-            white-space: nowrap;
             overflow: hidden;
         }
         .artistName {
@@ -32,6 +32,7 @@ svg(viewBox="0 0 475 182"
             font-weight: 400;
             font-size: 18px;
             line-height: 20px;
+            height: 20px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
@@ -40,16 +41,17 @@ svg(viewBox="0 0 475 182"
         img {
             border-radius: 6px;
         }
-    rect(fill=`#${backgroundColor}` x=0 y=0 width=475 height="100%")
-    foreignObject(width=475 height=182)
-        div.wrap(xmlns="http://www.w3.org/1999/xhtml")
-            img(
-                width=138
-                height=135
-                src=`${encodedAlbumArtImage}`
-            )
-            div.textContainer
-                div.songName(style=`color: #${textColor1};`) #{songName}
-                div.artistName(style=`color: #${textColor2};`) #{artistName}
+    - const track = tracks[0]
+        rect(fill=`#${track.backgroundColor}` x=0 y=0 width=475 height="100%" rx="6")
+        foreignObject(width=475 height=182)
+            div.wrap(xmlns="http://www.w3.org/1999/xhtml")
+                img(
+                    width=138
+                    height=135
+                    src=`${track.encodedAlbumArtImage}`
+                )
+                div.textContainer
+                    div.songName(style=`color: #${track.textColor1};`) #{track.songName}
+                    div.artistName(style=`color: #${track.textColor2};`) #{track.artistName}
 
 

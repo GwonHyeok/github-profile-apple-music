@@ -4,7 +4,7 @@ svg(viewBox="0 0 256 330"
     xmlns:xlink="http://www.w3.org/1999/xlink" fill="none")
     style.
         .wrap {
-            width: 100%;
+            width: 208px;
             font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
         }
 
@@ -13,9 +13,11 @@ svg(viewBox="0 0 256 330"
             font-style: normal;
             font-weight: 900;
             line-height: 30px;
+            height: 30px;
             text-overflow: ellipsis;
-            white-space: nowrap;
             overflow: hidden;
+            white-space: nowrap;
+            word-break: break-all;
         }
 
         .artistName {
@@ -23,6 +25,7 @@ svg(viewBox="0 0 256 330"
             font-weight: 400;
             font-size: 16px;
             line-height: 20px;
+            height: 20px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
@@ -32,14 +35,15 @@ svg(viewBox="0 0 256 330"
             margin-top: 24px;
             border-radius: 8px;
         }
-    rect(fill=`#${backgroundColor}` x=0 y=0 width=300 height="100%")
-    foreignObject(width=256 height=350 x=24 y=24)
-        div.wrap(xmlns="http://www.w3.org/1999/xhtml")
-            div.songName(style=`color: #${textColor1};`) #{songName}
-            div.artistName(style=`color: #${textColor2};`) #{artistName}
-            img(
-                width=208
-                height=204
-                src=`${encodedAlbumArtImage}`
-            )
+    - const track = tracks[0]
+        rect(fill=`#${track.backgroundColor}` x=0 y=0 width=300 height="100%")
+        foreignObject(width=256 height=350 x=24 y=24)
+            div.wrap(xmlns="http://www.w3.org/1999/xhtml")
+                div.songName(style=`color: #${track.textColor1};`) #{track.songName}
+                div.artistName(style=`color: #${track.textColor2};`) #{track.artistName}
+                img(
+                    width=208
+                    height=204
+                    src=`${track.encodedAlbumArtImage}`
+                )
 

@@ -1,0 +1,74 @@
+svg(viewBox="0 0 308 316"
+    width=308
+    height=316 xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" fill="none")
+    style.
+        .wrap {
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+            width: 308px;
+            height: 316px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .container {
+            max-width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            padding-left: 8px;
+            padding-right: 8px;
+            flex-direction: row;
+            gap: 8px;
+            border-radius: 6px;
+        }
+
+        .image {
+            width: 83px;
+            height: 81px;
+            background: aliceblue;
+            flex-grow: 0;
+            flex-shrink: 0;
+            border-radius: 6px;
+        }
+
+        .textContainer {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-top: 11px;
+            margin-bottom: 11px;
+            height: 78px;
+        }
+
+        .songName {
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: 20px;
+            letter-spacing: 0.01em;
+            word-break: break-all;
+            overflow: hidden;
+            height: 40px;
+        }
+
+        .artistName {
+            height: 20px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    rect(x=0 y=0 width=308 height="100%")
+    foreignObject(width=308 height=316)
+        div.wrap(xmlns="http://www.w3.org/1999/xhtml")
+            each track in tracks
+                div.container(style=`background-color: #${track.backgroundColor};`)
+                    img.image(src=`${track.encodedAlbumArtImage}`)
+                    div.textContainer
+                        div.songName(style=`color: #${track.textColor1};`) #{track.songName}
+                        div.artistName(style=`color: #${track.textColor2};`) #{track.artistName}
+
+

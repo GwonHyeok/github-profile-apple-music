@@ -4,11 +4,9 @@ import { userIdState } from '../states';
 export function ConnectedPage() {
   const [userId, setUserId] = useRecoilState(userIdState);
   const apiUrl = import.meta.env.VITE_API_URL;
-  const templates = [
-    `${apiUrl}/users/${userId}/recent/played/tracks`,
-    `${apiUrl}/users/${userId}/recent/played/tracks?template=template_1_2`,
-    `${apiUrl}/users/${userId}/recent/played/tracks?template=template_1_3`,
-  ];
+  const templateUrls = [`template_1_1`, `template_1_2`, `template_1_3`, `template_3_1`].map(
+    (template) => `${apiUrl}/users/${userId}/recent/played/tracks?template=${template}`,
+  );
 
   const copyTemplateUrlToMarkdown = async (template: string) => {
     const markdown = `[${template}](${template})`;
@@ -30,7 +28,7 @@ export function ConnectedPage() {
       </div>
       <h2>Available Templates</h2>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        {templates.map((templateUrl) => (
+        {templateUrls.map((templateUrl) => (
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <img src={templateUrl} alt="Recent Played Tracks" />
             {/*  Copy Template Url To Clipboard */}

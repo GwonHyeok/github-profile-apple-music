@@ -62,46 +62,43 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
     return;
   }
 
-  // Recently Song
-  let artistName;
-  let songName;
-  let encodedAlbumArtImage;
-  let backgroundColor;
-  let textColor1;
-  let textColor2;
-  if (response.body.data.length > 0) {
-    const track = response.body.data[0];
-    artistName = track.attributes.artistName;
-    songName = track.attributes.name;
-    backgroundColor = track.attributes.artwork.bgColor;
-    textColor1 = track.attributes.artwork.textColor1;
-    textColor2 = track.attributes.artwork.textColor2;
-    const image = await axios.get(
-      track.attributes.artwork.url.replace("{w}", "300").replace("{h}", "300"),
-      {responseType: "arraybuffer"},
-    );
+  const tracks = await Promise.all(
+    response.body.data.map(async (track) => {
+      const artistName = track.attributes.artistName;
+      const songName = track.attributes.name;
+      const backgroundColor = track.attributes.artwork.bgColor;
+      const textColor1 = track.attributes.artwork.textColor1;
+      const textColor2 = track.attributes.artwork.textColor2;
+      const image = await axios.get(
+        track.attributes.artwork.url
+          .replace("{w}", "300")
+          .replace("{h}", "300"),
+        {responseType: "arraybuffer"},
+      );
 
-    encodedAlbumArtImage = `data:image/jpeg;base64,${Buffer.from(
-      image.data,
-    ).toString("base64")}`;
-  }
+      const encodedAlbumArtImage = `data:image/jpeg;base64,${Buffer.from(
+        image.data,
+      ).toString("base64")}`;
+
+      return {
+        artistName,
+        songName,
+        encodedAlbumArtImage,
+        backgroundColor,
+        textColor1,
+        textColor2,
+      };
+    }),
+  );
 
   const templateId: string = (req.query.template as string) || "template_1_1";
 
   // debug logging
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Content-Type", "image/svg+xml; charset=utf-8");
-  res.render(templateId, {
-    ...response,
-    artistName,
-    songName,
-    encodedAlbumArtImage,
-    backgroundColor,
-    textColor1,
-    textColor2,
-  });
+  res.render(templateId, {...response, tracks});
 });
 
 app.use("/api/v1", v1Router);
 
-export const v1 = functions.runWith({memory: "1GB"}).https.onRequest(app);
+export const v1 = functions.runWith({memory: "8GB"}).https.onRequest(app);
