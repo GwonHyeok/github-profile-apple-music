@@ -101,4 +101,4 @@ v1Router.get("/users/:id/recent/played/tracks", async (req, res) => {
 
 app.use("/api/v1", v1Router);
 
-export const v1 = functions.runWith({memory: "8GB"}).https.onRequest(app);
+export const v1 = functions.runWith({memory: "1GB"}).https.onRequest(app);
