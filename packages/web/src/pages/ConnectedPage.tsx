@@ -1,4 +1,5 @@
 import { useRecoilState } from 'recoil';
+import { Background } from '../components/background/Background';
 import { userIdState } from '../states';
 
 export function ConnectedPage() {
@@ -21,22 +22,27 @@ export function ConnectedPage() {
   };
 
   return (
-    <div>
-      <div style={{ display: 'flex', gap: 16 }}>
-        <h1>Connected</h1>
-        <button onClick={disconnect}>Disconnect</button>
-      </div>
-      <h2>Available Templates</h2>
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        {templateUrls.map((templateUrl) => (
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <img src={templateUrl} alt="Recent Played Tracks" />
-            {/*  Copy Template Url To Clipboard */}
-            <button style={{ height: '4rem' }} type="button" onClick={() => copyTemplateUrlToMarkdown(templateUrl)}>
-              Copy Template Url
-            </button>
-          </div>
-        ))}
+    <div className="background">
+      <Background />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', gap: 16 }}>
+          <h1>Connected</h1>
+          <button type="button" onClick={disconnect}>
+            Disconnect
+          </button>
+        </div>
+        <h2>Available Templates</h2>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: 60 }}>
+          {templateUrls.map((templateUrl) => (
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <img src={templateUrl} alt="Recent Played Tracks" />
+              {/*  Copy Template Url To Clipboard */}
+              <button style={{ height: '4rem' }} type="button" onClick={() => copyTemplateUrlToMarkdown(templateUrl)}>
+                Copy Template Url
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
