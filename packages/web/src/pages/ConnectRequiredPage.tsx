@@ -20,7 +20,7 @@ export function ConnectRequiredPage() {
         </div>
         <div className="right">
           <img
-            src="https://github-profile-apple-music.web.app/api/v1/users/rpMHqh68GCkK2hQNgkMl/recent/played/tracks"
+            src="https://github-profile-apple-music.web.app/api/v1/users/A8b66HFNzUd7UTqa7Vci/recent/played/tracks?template=template_1_1"
             alt="preview"
           />
         </div>
