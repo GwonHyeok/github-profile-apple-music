@@ -9,6 +9,7 @@ interface ImportMetaEnv {
   readonly VITE_FIREBASE_MEASUREMENT_ID: string;
   readonly VITE_ADSENSE_CLIENT_ID: string;
   readonly VITE_API_URL: string;
+  readonly VITE_PREVIEW_USER_ID: string;
 }
 
 interface ImportMeta {
