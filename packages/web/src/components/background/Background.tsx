@@ -2,7 +2,7 @@ import './background.css';
 
 export function Background() {
   return (
-    <div className="floating-container">
+    <div className="floating-container" style={{ pointerEvents: 'none', zIndex: 0 }}>
       <svg width="100%" viewBox="0 0 1728 1117" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g opacity="0.1">
           <g className="circle circle-1" clipPath="url(#clip0_3_15)">
