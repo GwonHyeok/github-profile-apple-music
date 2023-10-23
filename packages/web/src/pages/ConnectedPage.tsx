@@ -1,4 +1,6 @@
 import { useRecoilState } from 'recoil';
+import { Button, Container, Flex, Grid, GridItem, Heading, Spacer, Stack, Text, useClipboard } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { Background } from '../components/background/Background';
 import { userIdState } from '../states';
 
@@ -9,41 +11,51 @@ export function ConnectedPage() {
     (template) => `${apiUrl}/users/${userId}/recent/played/tracks?template=${template}`,
   );
 
-  const copyTemplateUrlToMarkdown = async (template: string) => {
-    const markdown = `[${template}](${template})`;
-    await navigator.clipboard.writeText(markdown);
+  // Copied Value
+  const { onCopy, value, setValue, hasCopied } = useClipboard('');
+  const [clipboardTemplateUrl, setClipboardTemplateUrl] = useState('');
 
-    // show success alert
-    alert('Copied to clipboard!');
+  const copyTemplateUrlToMarkdown = async (template: string) => {
+    setValue(`[${template}](${template})`);
+    setClipboardTemplateUrl(template);
   };
 
   const disconnect = () => {
     setUserId(null);
   };
 
+  useEffect(() => {
+    if (value) onCopy();
+  }, [value]);
+
   return (
     <div className="background">
       <Background />
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', gap: 16 }}>
-          <h1>Connected</h1>
-          <button type="button" onClick={disconnect}>
-            Disconnect
-          </button>
-        </div>
-        <h2>Available Templates</h2>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: 60 }}>
-          {templateUrls.map((templateUrl) => (
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <img src={templateUrl} alt="Recent Played Tracks" />
-              {/*  Copy Template Url To Clipboard */}
-              <button style={{ height: '4rem' }} type="button" onClick={() => copyTemplateUrlToMarkdown(templateUrl)}>
-                Copy Template Url
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Container>
+        <Stack spacing={8}>
+          <Flex direction="row">
+            <Heading color="white">Templates</Heading>
+            <Spacer />
+            <Button onClick={disconnect} variant="link" color="white">
+              Disconnect
+            </Button>
+          </Flex>
+
+          <Grid templateColumns="repeat(2, 1fr)" gap={8} gridRowGap={8}>
+            {templateUrls.map((templateUrl) => (
+              <GridItem rowSpan={1} colSpan={1} key={templateUrl}>
+                <Stack direction="column" justifyItems="center">
+                  <img style={{ width: '100%' }} src={templateUrl} alt="Recent Played Tracks" />
+                  {/*  Copy Template Url To Clipboard */}
+                  <Button colorScheme="whiteAlpha" onClick={() => copyTemplateUrlToMarkdown(templateUrl)}>
+                    <Text>{hasCopied && clipboardTemplateUrl === templateUrl ? 'Copied!' : 'Copy Markdown'}</Text>
+                  </Button>
+                </Stack>
+              </GridItem>
+            ))}
+          </Grid>
+        </Stack>
+      </Container>
     </div>
   );
 }

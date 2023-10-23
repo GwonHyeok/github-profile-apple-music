@@ -1,3 +1,4 @@
+import { Heading, Stack } from '@chakra-ui/react';
 import { AppleMusicConnectButton } from '../components/AppleMusicConnectButton';
 import { Background } from '../components/background/Background';
 import { Logo } from '../components/Logo';
@@ -8,16 +9,16 @@ export function ConnectRequiredPage() {
       <Logo className="logo" />
       <Background />
       <div className="wrapper">
-        <div className="left">
-          <h1>
+        <Stack className="left" gap={16}>
+          <Heading size="3xl" lineHeight={1.2}>
             Connect to
             <br />
             Apple Music
             <br />
             Github Profile
-          </h1>
+          </Heading>
           <AppleMusicConnectButton />
-        </div>
+        </Stack>
         <div className="right">
           <img
             src={`https://github-profile-apple-music.web.app/api/v1/users/${

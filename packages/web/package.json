@@ -9,7 +9,11 @@
     "deploy": "firebase deploy --only hosting"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "firebase": "^9.8.4",
+    "framer-motion": "^6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.0.3",

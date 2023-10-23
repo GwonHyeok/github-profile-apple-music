@@ -2,6 +2,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
+import { Text } from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import { userIdState } from '../states';
 
@@ -33,7 +34,7 @@ export function AppleMusicConnectButton() {
 
   return (
     <div className="button" onClick={() => requestAuth()} role="presentation">
-      Connect
+      <Text>Connect</Text>
       <div className="play-circle">
         <svg width="39" height="45" viewBox="0 0 39 45" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
