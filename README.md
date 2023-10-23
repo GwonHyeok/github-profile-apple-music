@@ -52,7 +52,7 @@ VITE_FIREBASE_API_KEY
 VITE_FIREBASE_AUTH_DOMAIN
 VITE_FIREBASE_PROJECT_ID
 VITE_FIREBASE_STORAGE_BUCKET
-VITE_FIREBASE_MESSAGING_SENDER_ID
+VITE_FIREBASE_MESSAGING_SENDER_IDg
 VITE_FIREBASE_APP_ID
 VITE_FIREBASE_MEASUREMENT_ID
 VITE_ADSENSE_ENABLED
@@ -111,3 +111,6 @@ yarn build:web
 ```bash
 yarn deploy:web
 ```
+
+## Contributors
+![GitHub Contributors Image](https://contrib.rocks/image?repo=GwonHyeok/github-profile-apple-music)
